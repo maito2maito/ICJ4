@@ -69,4 +69,9 @@ public class SCC_InputProcessor : MonoBehaviour {
 
     }
 
+    public void ToggleInput(bool t)
+    {
+        receiveInputsFromInputManager = t;
+    }
+
 }
