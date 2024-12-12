@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class TimelineManager : MonoBehaviour
 {
+    public bool startWithIntro = true;
+
     [SerializeField] TimelineAction introTimeLine;
+    [SerializeField] TimelineAction alkoTimeline;
 
     public static TimelineManager Instance;
 
@@ -17,14 +20,20 @@ public class TimelineManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(PlayTimeLine(introTimeLine));
-        
+        if (startWithIntro)
+            StartCoroutine(PlayTimeLine(introTimeLine));
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void PlayAlko()
+    {
+        StartCoroutine(PlayTimeLine(alkoTimeline));
     }
 
     IEnumerator PlayTimeLine(TimelineAction timeline)
@@ -39,7 +48,7 @@ public class TimelineManager : MonoBehaviour
 
         timeline.onEnd.Invoke();
     }
-    
+
 }
 
 [Serializable]
